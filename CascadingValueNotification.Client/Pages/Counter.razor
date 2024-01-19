@@ -1,0 +1,26 @@
+﻿@page "/counter"
+@rendermode InteractiveAuto
+
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+<p role="status">Current count: @User.Clicks</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+<!-- let's see if two-way binding "fixes" this? -->
+<input type="number" title="Clicks" @bind-value="User.Clicks">
+
+<p>
+    <UserInfo />
+</p>
+
+@code {
+    [CascadingParameter] public required User User { get; set; }
+
+    private void IncrementCount()
+    {
+        User.Clicks++;
+    }
+}

@@ -9,5 +9,6 @@ await builder.Build().RunAsync();
 
 public class User
 {
+    public string Id { get; } = Guid.NewGuid().ToString();
     public int Clicks { get; set; }
 }

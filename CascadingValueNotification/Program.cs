@@ -5,6 +5,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCascadingValue(s => new CascadingValueSource<User>(new User(), false));
 
+// this one will notify when the value changes, see NotifyingCounter.razor
+builder.Services.AddCascadingValue(s => CascadingValueSource.CreateNotifying(new NotifyingUser()));
+
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()

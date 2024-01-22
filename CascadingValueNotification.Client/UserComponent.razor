@@ -1,0 +1,11 @@
+﻿@rendermode InteractiveWebAssembly
+
+<CascadingValue Value="@user">
+    @ChildContent
+</CascadingValue>
+
+@code {
+    User user = new();
+
+    [Parameter] public required RenderFragment ChildContent { get; set; }
+}

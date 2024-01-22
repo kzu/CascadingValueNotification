@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
@@ -33,10 +34,13 @@ public class NotifyingUser : INotifyPropertyChanged
             if (clicks != value)
             {
                 clicks = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Clicks)));
+                OnPropertyChanged();
             }
         }
     }
+
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = default)
+       => PropertyChanged?.Invoke(this, new(propertyName));
 }
 
 public static class CascadingValueSource

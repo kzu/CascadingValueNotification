@@ -12,8 +12,9 @@
 <p>User Id: @User.Id</p>
 
 <!-- let's see if two-way binding "fixes" this? -->
-<input type="number" title="Clicks" @bind-value="User.Clicks">
+<input type="number" title="Clicks" @bind-value:event="oninput" @bind-value="User.Clicks">
 
+<hr />
 <p>
     <UserInfo />
 </p>
